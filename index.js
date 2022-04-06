@@ -26,12 +26,21 @@ movie.appendChild(deleteBtn);
 
 const deleteMovie = (event) => {
 event.target.parentNode.remove();
-message.textContent = 'MOVIE HAS BEEN TERMINATED';
+message.textContent = `${event.target.parentNode.textContent} HAS BEEN TERMINATED`;
+revealMessage();
 }
 
 const crossOffMovie = (event) => {
 event.target.classList.toggle('checked');
-event.target.classList.contains('checked') ? message.textContent = 'Movie watched' : message.textContent = 'Movie added back!'
+event.target.classList.contains('checked') ? message.textContent = `${event.target.textContent} watched` : message.textContent = `${event.target.textContent} added back`
+revealMessage();
+};
+
+const revealMessage = () => {
+    message.classList.remove('hide')
+setTimeout(()=>{
+    message.classList.add('hide')
+}, 1000)
 };
 
 const button = document.querySelector('#button');
